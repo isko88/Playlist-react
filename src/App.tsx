@@ -1,24 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getPlaylists } from './actions/playlistActions';
+import { getSongs } from './actions/songActions';
+import './App.css';
+import Youtubeapp from './components/Youtubeapp';
+import IState from './types/stateType';
+
+const App:React.FC = ()=> {
+  const dispatch = useDispatch();
+  const {song} = useSelector((state:IState) => state)
+  const {playlist}  = useSelector((state:IState) => state)
+  useEffect(() => {
+    getSongs()(dispatch)
+    getPlaylists()(dispatch)
+  }, [dispatch])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {(song[0]._id && playlist[0]._id) ? (<Youtubeapp song={song[0]._id && song} playlist={playlist[0]._id && playlist}/>):"Loading"}
+     
     </div>
   );
 }
