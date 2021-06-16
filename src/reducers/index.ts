@@ -2,7 +2,7 @@ import { PLAYLIST_ACTION_TYPES, SONG_ACTION_TYPES } from "../actions/actionTypes
 import { IActionSong } from "../actions/songActions";
 import { ISong } from "../types/songType";
 import { IPlaylist } from "../types/playlistType";
-import { IActionPlaylist } from "../actions/playlistActions";
+import { IActionPlaylist } from "../actions/studentActions";
 
 const SONG_INITIAL_STATE : ISong[] = [
     {

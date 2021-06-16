@@ -1,7 +1,7 @@
 
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPlaylists } from './actions/playlistActions';
+import { getPlaylists } from './actions/studentActions';
 import { getSongs } from './actions/songActions';
 import './App.css';
 import Youtubeapp from './components/Youtubeapp';

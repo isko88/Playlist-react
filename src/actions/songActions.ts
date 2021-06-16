@@ -1,64 +1,64 @@
 import axios from "axios";
-import { ISong } from "../types/songType";
-import { SONG_ACTION_TYPES } from "./actionTypes";
+import { IClass } from "../types/ClassType";
+import { Class_ACTION_TYPES } from "./actionTypes";
 
-export interface IActionSongsGet {
-    type:SONG_ACTION_TYPES.GET_SONGS,
-    payload:ISong[]
+export interface IActionClasssGet {
+    type:Class_ACTION_TYPES.GET_ClassS,
+    payload:IClass[]
 }
 
-export interface IActionSongAdd {
-    type:SONG_ACTION_TYPES.ADD_SONG,
-    payload:ISong
+export interface IActionClassAdd {
+    type:Class_ACTION_TYPES.ADD_Class,
+    payload:IClass
 }
 
-export interface IActionSongDelete {
-    type:SONG_ACTION_TYPES.DELETE_SONG,
+export interface IActionClassDelete {
+    type:Class_ACTION_TYPES.DELETE_Class,
     payload:String
 }
 
-export interface IActionSongEdit {
-    type:SONG_ACTION_TYPES.EDIT_SONG,
+export interface IActionClassEdit {
+    type:Class_ACTION_TYPES.EDIT_Class,
     payload:String
 }
 
 
-export type IActionSong = IActionSongsGet | IActionSongAdd | IActionSongDelete | IActionSongEdit
+export type IActionClass = IActionClasssGet | IActionClassAdd | IActionClassDelete | IActionClassEdit
 
 
 
 
-export const getSongs = () => {
+export const getClasss = () => {
     return (dispatch: any) => {
-        return axios.get('http://localhost:8000/songs').then(
-            ({ data }) => dispatch({ type: SONG_ACTION_TYPES.GET_SONGS, payload: data }),
+        return axios.get('http://localhost:8000/Classs').then(
+            ({ data }) => dispatch({ type: Class_ACTION_TYPES.GET_ClassS, payload: data }),
             err => console.log(err)
         );
     };
 };
 
-export const addSong = (song:ISong) => {
+export const addClass = (Class:IClass) => {
     return (dispatch: any) => {
-        return axios.post('http://localhost:8000/songs',song).then(
-            ({ data }) => dispatch({ type: SONG_ACTION_TYPES.ADD_SONG, payload: data }),
+        return axios.post('http://localhost:8000/Classs',Class).then(
+            ({ data }) => dispatch({ type: Class_ACTION_TYPES.ADD_Class, payload: data }),
             err => console.log(err)
         );
     };
 };
 
-export const editSong = (songID : String) => {
+export const editClass = (ClassID : String) => {
     return (dispatch: any) => {
-        return axios.patch(`http://localhost:8000/songs/${songID}`).then(
-            ({ data }) => dispatch({ type: SONG_ACTION_TYPES.EDIT_SONG, payload: data }),
+        return axios.patch(`http://localhost:8000/Classs/${ClassID}`).then(
+            ({ data }) => dispatch({ type: Class_ACTION_TYPES.EDIT_Class, payload: data }),
             err => console.log(err)
         );
     };
 };
 
-export const deleteSong = (songID : String) => {
+export const deleteClass = (ClassID : String) => {
     return (dispatch: any) => {
-        return axios.delete(`http://localhost:8000/songs/${songID}`).then(
-            ({ data }) => dispatch({ type: SONG_ACTION_TYPES.DELETE_SONG, payload: data }),
+        return axios.delete(`http://localhost:8000/Classs/${ClassID}`).then(
+            ({ data }) => dispatch({ type: Class_ACTION_TYPES.DELETE_Class, payload: data }),
             err => console.log(err)
         );
     };
